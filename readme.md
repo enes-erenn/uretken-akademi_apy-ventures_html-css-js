@@ -4,4 +4,4 @@
 <h4>Ödevler</h4>
 
 <h5>1) Hesap Makinesi</h5>
-<img align="center" src="https://raw.githubusercontent.com/thenesern/uretken-akademi-react/master/assets/calculator.png"/>
+<img align="center" src="https://raw.githubusercontent.com/thenesern/uretken-akademi-react/master/assets/hesapMakinesi.png"/>
