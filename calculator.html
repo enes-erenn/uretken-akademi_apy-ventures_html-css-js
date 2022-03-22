@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--  Burada "fonts.google.com"dan bir Font seçtik -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stiller, Burada Flex Box yapısını kuruyoruz -->
+    <style>
+      /*  Hemen Hemen her CSS dosyasında başlarken kullanmamız gereken bir kalıp "*" işareti "Top Level" dediğimiz en büyük stillendirme işaretidir*/
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      /* Dış yapıyı kuruyoruz */
+      .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffe8d6;
+      }
+      .header {
+        text-align: center;
+        color: #001219;
+      }
+
+      /*  Burada Başlığı ve Göstergeler kısmını ayırıyorum */
+      .box {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        padding-top: 10%;
+        height: 24rem;
+        padding: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+      /* Burada butonları 2 kısma ayırıyorum ve soldaki kısıma %80'lik pay sağdaki kısma %20'lik pay veriyorum */
+      .sides {
+        display: grid;
+        grid-template-columns: 8fr 2fr;
+      }
+      /*  Flex yapısı için iyi bir örnek, elemanlara flex özelliği verip yönünü "sütun" olarak ayarlıyorum */
+      .right {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .right button {
+        width: 3rem;
+        height: 3rem;
+      }
+      .bottom button {
+        width: 5rem;
+        height: 3rem;
+      }
+      .input {
+        width: 100%;
+        height: 3rem;
+        outline: none;
+        cursor: default;
+      }
+      /*   Burada nokta veya hash işareti kullanmadım, yani buradaki stil bütün button elemanlarına etki edecektir */
+      button {
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      /*  Burada sol kısımdaki butonları tek sütünde 3'erli olacak şekilde ayarlıyorum */
+      .bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      footer {
+        text-align: center;
+        position: absolute;
+        bottom: 1%;
+      }
+      a {
+        text-decoration: none;
+        color: #001219;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <div class="box">
+      <h3 class="header">Hesap Makinesi</h3>
+      <div class="sides">
+        <div class="left">
+          <div>
+            <input type="text" class="input" id="output" readonly />
+          </div>
+          <div class="bottom">
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button">.</button>
+            <button class="button">0</button>
+            <button class="button">=</button>
+          </div>
+        </div>
+        <div class="right">
+          <button class="button">C</button>
+          <button class="button">/</button>
+          <button class="button">-</button>
+          <button class="button">+</button>
+          <button class="button">*</button>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>Created by <a href="https://github.com/thenesern">Enes Eren</a></p>
+    </footer>
+  </body>
+  <script>
+    // Çıktılarımı gösterecek elemanı seçtim.
+    let output = document.getElementById("output");
+    // Bütün "button" class'ına sahip olan elemanları seçtim
+    let buttons = Array.from(document.getElementsByClassName("button"));
+    // Buradaki "map" metodu "Array" olan bir eleman için kullanılır.
+    // Bütün butonları içeren Array'imize "map" metodu uyguluyorum ve sonra her biri için "button" adı veriyorum.
+    // Dikkat edecek olursanız çoğul ve tekil farkını görebilirsiniz.
+    // Sonra "addEventListener" yani olay dinleyicisine "click" metodunu atıyorum.
+    // Yani bütün butonları içeren "buttons" Array'indeki her bir "button" elemanına "tıkla"ndığında...
+    buttons.map((button) => {
+      // Burada "e" dediğimiz şey "event"in kısaltmasıdır, bizim eventimiz "click" olduğuna göre her bir "click" olayında... bir şey yap. Diye emir veriyoruz
+      button.addEventListener("click", (e) => {
+        // Switch - Case ilişkisi If - Else ilişkisi ile benzerdir burada aslında bazı "case" yani durumlar, vakalar söz konusu her bir durumda yapılacak işlemi değiştir diyebiliriz
+        // Parametre olarak "e.target.innerText" seçtik, yani event(click) hedefinin(target) içindeki metin(text)'i seçiyoruz.
+        switch (e.target.innerText) {
+          // Durum "C" olduğunda.. Yani e.target.innerText "C" olduğunda.
+          // Örn: "tıkla"dığımız hedefin içindeki metin "C" ise...
+          case "C":
+            // Çıktı değerini boş bırak
+            // Çünkü "C" Clear demek yani çıktı kısmını temizliyoruz.
+            output.value = "";
+            break;
+          // Durum "=" ise, Yani tıklama olayında hedef "eşittir işareti" ise,
+          case "=":
+            // Çıktı kısmındaki değerleri hesapla ve çıktı değeri yerine getirmeye çalış.
+            try {
+              output.value = eval(output.value);
+            } catch {
+              // Olmuyorsa çıktı kısmına "Hata" yaz
+              output.value = "Error";
+            }
+            break;
+          // Eğer yukarıdaki durumlar yoksa toplama işlemi yap ve çıktıyı, çıktı kısmına getir.
+          default:
+            output.value += e.target.innerText;
+        }
+      });
+    });
+  </script>
+</html>
