@@ -11,3 +11,6 @@
 
 <h5>3) Blog Sayfası</h5>
 <img align="center" src="https://raw.githubusercontent.com/thenesern/uretken-akademi-react/master/assets/blog.png"/>
+
+<h5>3) Galeri</h5>
+<img align="center" src="https://raw.githubusercontent.com/thenesern/uretken-akademi-react/master/assets/galeri.png"/>
