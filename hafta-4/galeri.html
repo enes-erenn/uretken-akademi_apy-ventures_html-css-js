@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galerim</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body></body>
+  <script>
+    /*---------------------------------------------*/
+    // Izgara yapısını burada tanımlıyoruz.
+    // Sütun
+    const gridColumns = 3;
+
+    // Sıra
+    const gridRows = 5;
+
+    // Görsel Sayısı
+    const gridItems = gridColumns * gridRows;
+
+    /*---------------------------------------------*/
+    // Burada HTML kısmını oluşturuyoruz.
+
+    // Kaynak olarak kullanacağımız bağlantıyı tanımlıyoruz.
+    const link = "https://source.unsplash.com/collection";
+
+    // Body elementini seçiyoruz.
+    const body = document.querySelector("body");
+
+    // Başlığımız için bir Header elementi oluşturuyoruz.
+    const header = document.createElement("h1");
+
+    // Başlığımızı yazıyoruz.
+    const headerText = document.createTextNode("Galerim");
+
+    // Metnimizi Header elementine yediriyoruz.
+    header.appendChild(headerText);
+
+    // Başlığmızı Body'e yerleştiriyoruz.
+    body.insertBefore(header, body.firstChild);
+
+    // Galerimizin en dış çerçevesini oluşturuyoruz.
+    // Bütün fotoğraflar bu elementin "child" elemanı olacak.
+    const gallery = document.createElement("div");
+
+    // Galerimizi Body'e yerleştiriyoruz.
+    body.appendChild(gallery, body.firstChild);
+
+    /*---------------------------------------------*/
+    // CSS kısmını burada oluşturuyoruz.
+
+    // Başlığımızı ortalıyoruz.
+    header.style.textAlign = "center";
+
+    // Header için Stillendirmeler.
+    header.style.fontFamily = "Open Sans";
+    header.style.letterSpacing = "1px";
+    header.style.color = "#f1faee";
+
+    // Body için Stillendirmeler.
+    body.style.display = "flex";
+    body.style.alignItems = "center";
+    body.style.justifyContent = "center";
+    body.style.backgroundColor = "#001219";
+    body.style.flexDirection = "column";
+
+    // Galeri için Stillendirmeler.
+    gallery.style.display = "grid";
+    gallery.style.alignItems = "center";
+    gallery.style.gap = "1rem";
+    gallery.style.justifyContent = "center";
+    gallery.style.gridTemplateColumns = `repeat(${gridColumns}, 1fr)`;
+
+    /*---------------------------------------------*/
+
+    for (let i = 0; i < gridItems; i++) {
+      // Img elementini oluşturuyoruz.
+      const image = document.createElement("img");
+
+      // Image elementini galeri'ye yerleştiriyoruz.
+      gallery.appendChild(image);
+
+      // Image Stillendirmeleri.
+      image.style.border = "1px solid white";
+
+      // Oluşturduğumuz Img elementlerine "src" giriyoruz.
+      document.querySelectorAll("img").forEach((image) => {
+        image.src = `${link}/${Math.floor(Math.random() * 100)}/300x300`;
+      });
+    }
+  </script>
+</html>
