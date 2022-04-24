@@ -30,8 +30,6 @@
 
 <h3>4) Gallery </h5>
 <ul>
-  <li>HTML (Nav, List, Link)</li>
-  <li>CSS (Flex-Box)</li>
   <li>JS (HTML Elements with JS, Styling with JS, For Loop)</li>
 </ul>
 
